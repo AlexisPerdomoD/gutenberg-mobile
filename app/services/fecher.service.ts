@@ -1,4 +1,5 @@
-import { FetcherOptions, Err } from '../models'
+import { FetcherOptions, Err } from "../models"
+
 /**
  * fecher service to fetch data from diferent sources, recive the model of the type of response you are waiting for. 
  * */
