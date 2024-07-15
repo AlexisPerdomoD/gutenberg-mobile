@@ -1,6 +1,6 @@
 import { useLocalSearchParams } from 'expo-router'
 import { Text, View } from 'react-native'
-// screens/[BookDetailScreen].tsx
+// home/[BookDetailScreen].tsx
 export default () => {
     const bookID = useLocalSearchParams<{ BookDetailScreen: string }>()
     return (

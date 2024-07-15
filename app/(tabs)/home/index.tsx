@@ -5,11 +5,11 @@ export default () => {
     return (
         <View>
             <Text>Home, here will be list the general books collection</Text>
-            <Button onPress={() => router.push('screens/home/3')} title="Go to BookDetailScreen with id 3" />
+            <Button onPress={() => router.push('/home/3')} title="Go to BookDetailScreen with id 3" />
             <Button
                 onPress={() =>
                     router.push({
-                        pathname: 'screens/home/[BookDetailScreen]',
+                        pathname: '/home/[BookDetailScreen]',
                         params: { BookDetailScreen: '1' }
                     })
                 }
