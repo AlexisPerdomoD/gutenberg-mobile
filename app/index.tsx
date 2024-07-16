@@ -1,8 +1,8 @@
 import { Link } from 'expo-router'
 import { StatusBar } from 'expo-status-bar'
-import { StyleSheet, Text, View } from 'react-native'
-import globalStyles from '../src/styles'
+import { ScrollView, Text, View } from 'react-native'
 import { useFonts } from 'expo-font'
+import constants from 'expo-constants'
 import * as SplashScreen from 'expo-splash-screen'
 import {
     NotoSerif_400Regular,
@@ -11,6 +11,8 @@ import {
     NotoSerif_700Bold_Italic
 } from '@expo-google-fonts/noto-serif'
 import { useEffect } from 'react'
+import Header from '../src/components/header'
+import ContainerWithImage from '../src/components/containers/ContainerWithImage'
 /**
  * prevents the splash screen from being automatically hidden
  * used to load fonts
@@ -30,40 +32,49 @@ const App = () => {
         if (fontsLoaded || err) SplashScreen.hideAsync()
     }, [fontsLoaded, err])
 
-    return !fontsLoaded ? (
-        null
-    ) : (
-        <View style={styles.container}>
-            <Text
-                style={{
-                    fontFamily: 'NotoSerif Bold',
-                    fontSize: globalStyles.fontSize.xl,
-                    color: globalStyles.colors.primary
-                }}
-            >
-                Gutenberg
-            </Text>
-            <Link href="(tabs)/home">
-                <Text
-                    style={{
-                        fontWeight: '500',
-                        fontSize: globalStyles.fontSize.l,
-                        color: globalStyles.colors.primary
-                    }}
-                >
-                    vista donde esta el home etc
-                </Text>
-            </Link>
-            <StatusBar style="auto" />
+    return !fontsLoaded ? null : (
+        <View className='flex-1 flex-col h-full items-center bg-alternateBackground gap-2'
+            style={{
+                paddingTop: constants.statusBarHeight
+            }}
+        >
+            <Header />
+            <ScrollView>
+                <ContainerWithImage
+                    image={require('../assets/images/book-collection-brown-3.avif')}
+                    description='Classic and modern literature collections'
+                    title='Thousands of free books, read and download'
+                />
+                <Link href="(tabs)/home" className="w-full mt-8">
+                    <Text
+                        className="text-secondary font-text text-xl text-center"
+                    >
+                        vista donde esta el home etc
+                    </Text>
+                </Link>
+                <StatusBar style="auto" />
+            </ScrollView>
         </View>
     )
 }
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: globalStyles.colors.lightBackground
-    }
-})
 export default App
+
+
+
+//// Información sobre la propiedad de la aplicación
+//const appOwnership = Constants.appOwnership; 
+//// "expo": si se ejecuta en Expo Go
+//// "standalone": si se ejecuta como una aplicación independiente
+//// "guest": si se ejecuta en un cliente Expo de un proyecto que no es tuyo
+//// Identificador único para el dispositivo
+//const deviceId = Constants.deviceId; 
+//// Ejemplo: "123e4567-e89b-12d3-a456-426614174000"
+//
+//// Nombre del dispositivo
+//const deviceName = Constants.deviceName; 
+//// Ejemplo: "iPhone 12"
+//// Configuración de Expo especificada en app.json o app.config.js
+//const expoConfig = Constants.expoConfig; 
+//// Ejemplo: { "name": "MyApp", "slug": "my-app", ... }
+//
+
