@@ -37,10 +37,3 @@ export interface Book {
     formats: { [key: string]: string }
     download_count?: number
 }
-
-export interface GutendexResponse {
-    count: number
-    next: string
-    previous: string
-    results: Book[]
-}
