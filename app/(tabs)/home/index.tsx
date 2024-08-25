@@ -1,10 +1,11 @@
-import { router } from 'expo-router'
 import { useEffect, useState } from 'react'
-import { Button, FlatList, Text, View } from 'react-native'
+import { ActivityIndicator, FlatList, View } from 'react-native'
 import { Book } from '../../../src/models'
 import gutendex from '../../../src/services/gutendex'
+import Header from '../../../src/components/header'
+import { AnimatedBookCard } from '../../../src/components/book-card'
 // screens/home/index.tsx
-export default () => {
+export default function Home() {
     const [books, setBooks] = useState<Book[] | null>(null)
     useEffect(() => {
         gutendex.clearParamsUrl()
@@ -25,26 +26,21 @@ export default () => {
     //        />
 
     return (
-        <View>
-            <Text>Home, here will be list the general books collection</Text>
-            <FlatList
-                data={books}
-                keyExtractor={(item) => item.id.toString()}
-                renderItem={({ item }) => (
-                    <View>
-                        <Text>{item.title}</Text>
-                        <Button
-                            onPress={() =>
-                                router.push({
-                                    pathname: '/home/[BookDetailScreen]',
-                                    params: { BookDetailScreen: item.id.toString() }
-                                })
-                            }
-                            title="Go to BookDetailScreen"
-                        />
-                    </View>
-                )}
-            />
+        <View className="flex-1 h-full bg-alternateBackground">
+            <Header />
+            {!books ? (
+                <View className="flex-1 h-full items-center justify-center">
+                    <ActivityIndicator size="large" />
+                </View>
+            ) : (
+                <FlatList
+                    data={books}
+                    keyExtractor={(item) => item.id.toString()}
+                    renderItem={({ item, index }) => {
+                        return <AnimatedBookCard book={item} index={index} />
+                    }}
+                />
+            )}
         </View>
     )
 }

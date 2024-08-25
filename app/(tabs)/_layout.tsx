@@ -1,11 +1,20 @@
 import { Tabs } from 'expo-router'
 // screens/(tabs)/_layout.tsx
-export default () => {
+export default function MainLayout () {
     return (
-        <Tabs>
-            <Tabs.Screen name="home" />
-            <Tabs.Screen name="DetailedSearch" />
-            <Tabs.Screen name="about" />
+        <Tabs
+            screenOptions={{
+                headerShown: false,
+            }}
+        >
+            <Tabs.Screen
+                name="home"
+                options={{
+                    title: 'Home'
+                }}
+            />
+            <Tabs.Screen name="DetailedSearch" options={{ title: 'Search' }} />
+            <Tabs.Screen name="about" options={{ title: 'About' }} />
         </Tabs>
     )
 }

@@ -3,11 +3,11 @@
 import { Stack } from 'expo-router'
 
 // /home/_layout.tsx
-export default () => {
+export default function HomeLayout() {
     return (
-        <Stack>
-            <Stack.Screen name="index" options={{ headerShown: false }} />
-            <Stack.Screen name="[BookDetailScreen]" options={{ headerShown: false }} />
+        <Stack screenOptions={{ headerShown: false }}>
+            <Stack.Screen name="index" />
+            <Stack.Screen name="[BookDetailScreen]" />
         </Stack>
     )
 }

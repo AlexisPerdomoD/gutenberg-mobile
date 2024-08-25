@@ -2,7 +2,6 @@ import { Link } from 'expo-router'
 import { StatusBar } from 'expo-status-bar'
 import { ScrollView, Text, View } from 'react-native'
 import { useFonts } from 'expo-font'
-import constants from 'expo-constants'
 import * as SplashScreen from 'expo-splash-screen'
 import {
     NotoSerif_400Regular,
@@ -33,24 +32,16 @@ const App = () => {
     }, [fontsLoaded, err])
 
     return !fontsLoaded ? null : (
-        <View className='flex-1 flex-col h-full items-center bg-alternateBackground gap-2'
-            style={{
-                paddingTop: constants.statusBarHeight
-            }}
-        >
+        <View className="flex-1 flex-col h-full items-center bg-alternateBackground gap-2">
             <Header />
             <ScrollView>
                 <ContainerWithImage
                     image={require('../assets/images/book-collection-brown-3.avif')}
-                    description='Classic and modern literature collections'
-                    title='Thousands of free books, read and download'
+                    description="Classic and modern literature collections"
+                    title="Thousands of free books, read and download"
                 />
-                <Link href="(tabs)/home" className="w-full mt-8">
-                    <Text
-                        className="text-secondary font-text text-xl text-center"
-                    >
-                        vista donde esta el home etc
-                    </Text>
+                <Link href="/home" className="w-full mt-8" asChild>
+                    <Text className="text-secondary font-text text-xl text-center">vista donde esta el home etc</Text>
                 </Link>
                 <StatusBar style="auto" />
             </ScrollView>
@@ -59,22 +50,19 @@ const App = () => {
 }
 export default App
 
-
-
 //// Información sobre la propiedad de la aplicación
-//const appOwnership = Constants.appOwnership; 
+//const appOwnership = Constants.appOwnership;
 //// "expo": si se ejecuta en Expo Go
 //// "standalone": si se ejecuta como una aplicación independiente
 //// "guest": si se ejecuta en un cliente Expo de un proyecto que no es tuyo
 //// Identificador único para el dispositivo
-//const deviceId = Constants.deviceId; 
+//const deviceId = Constants.deviceId;
 //// Ejemplo: "123e4567-e89b-12d3-a456-426614174000"
 //
 //// Nombre del dispositivo
-//const deviceName = Constants.deviceName; 
+//const deviceName = Constants.deviceName;
 //// Ejemplo: "iPhone 12"
 //// Configuración de Expo especificada en app.json o app.config.js
-//const expoConfig = Constants.expoConfig; 
+//const expoConfig = Constants.expoConfig;
 //// Ejemplo: { "name": "MyApp", "slug": "my-app", ... }
 //
-
