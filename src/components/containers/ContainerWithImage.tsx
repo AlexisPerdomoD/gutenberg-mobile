@@ -1,4 +1,3 @@
-import React from 'react'
 import { ImageBackground, ImageSourcePropType, Text, View } from 'react-native'
 
 type Props = {
@@ -7,7 +6,7 @@ type Props = {
     description?: string
 }
 // Components/ContainerWithImage.tsx
-export default ({ image, title, description }: Props) => {
+export default function ContainerWithImage({ image, title, description }: Props){
     return (
         <ImageBackground
             source={image}
