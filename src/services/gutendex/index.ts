@@ -1,7 +1,7 @@
 import { Params, GutendexResponse } from '../../models/gutendex'
 import { fetcher } from '../fecher.service'
 
-class GutendexMannager {
+export class GutendexMannager {
     private url = new URL('http://gutendex.com/books/')
     clearParamsUrl() {
         this.url = new URL('http://gutendex.com/books/')
