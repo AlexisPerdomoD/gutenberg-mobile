@@ -9,9 +9,10 @@ import {
     NotoSerif_700Bold,
     NotoSerif_700Bold_Italic
 } from '@expo-google-fonts/noto-serif'
-import { useEffect } from 'react'
+import { useEffect, useMemo } from 'react'
 import Header from '../src/components/header'
 import ContainerWithImage from '../src/components/containers/ContainerWithImage'
+import HorizontalListMemo from '../src/components/containers/HorizontalList'
 /**
  * prevents the splash screen from being automatically hidden
  * used to load fonts
@@ -30,19 +31,28 @@ const App = () => {
     useEffect(() => {
         if (fontsLoaded || err) SplashScreen.hideAsync()
     }, [fontsLoaded, err])
-
+    const featuresBooksSearchParams = useMemo(
+        () => ({ ids:'345,43,68283,74147,100,2600,1661' }),
+        []
+    )
     return !fontsLoaded ? null : (
         <View className="flex-1 flex-col h-full items-center bg-alternateBackground gap-2">
             <Header />
-            <ScrollView>
+            <ScrollView className="w-full">
                 <ContainerWithImage
                     image={require('../assets/images/book-collection-brown-3.avif')}
                     description="Classic and modern literature collections"
                     title="Thousands of free books, read and download"
                 />
                 <Link href="/home" className="w-full mt-8" asChild>
-                    <Text className="text-secondary font-text text-xl text-center">vista donde esta el home etc</Text>
+                    <Text className="text-secondary font-text text-xl text-center">
+                        vista donde esta el home etc
+                    </Text>
                 </Link>
+                <HorizontalListMemo
+                    params={featuresBooksSearchParams}
+                    title="Featured books"
+                />
                 <StatusBar style="auto" />
             </ScrollView>
         </View>
