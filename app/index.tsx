@@ -12,7 +12,7 @@ import {
 import { useEffect, useMemo } from 'react'
 import Header from '../src/components/header'
 import ContainerWithImage from '../src/components/containers/ContainerWithImage'
-import HorizontalListMemo from '../src/components/containers/HorizontalList'
+import HorizontalListMemo from '../src/components/lists/HorizontalList'
 /**
  * prevents the splash screen from being automatically hidden
  * used to load fonts

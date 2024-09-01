@@ -14,7 +14,9 @@ export const AlternativeBookCard = ({ book, ...props }: Props) => {
             onPress={() =>
                 router.push({
                     pathname: '/home/[BookDetailScreen]',
-                    params: { BookDetailScreen: book.id.toString() }
+                    params: {
+                        BookDetailScreen: JSON.stringify(book),
+                    }
                 })
             }
         >
